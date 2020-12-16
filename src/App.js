@@ -1,8 +1,23 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+//i want to dispatch action when the app component gets loaded
+//to get the dispatch method in a react component 
+  //import the hook from react-redux 
+import { useDispatch } from 'react-redux';
 import Cart from './components/Cart';
 import ProduceList from './components/ProduceList';
+//import the action 
+import { populateProduce } from './store/produce';
+
 
 function App() {
+  //use the useEffect hook to dispatch the action when the app component first loads
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(populateProduce());
+    //be sure to add dispatch to the dependency array 
+    //action should only be dispatche once 
+  }, [dispatch]);
+
   const [showCart, setShowCart] = useState(false);
 
   return (
