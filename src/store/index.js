@@ -1,4 +1,5 @@
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
+import produceReducer from "./produce";
 
 //createStore - creates a redux store (let's go shopping boo)
 
@@ -15,7 +16,10 @@ enhancer
 */
 
 const rootReducer = combineReducers ({
-
+    //create space in the Redux store for the produce 
+    //add a key in the redux store for handling the produce information
+    //this key will be the produce slice of state 
+    produce: produceReducer,
 });
 
 //used when app is in development

@@ -4,7 +4,9 @@ import { BrowserRouter } from 'react-router-dom';
 //import the Provider component from react-redux
 import { Provider } from 'react-redux';
 //importation of configureStore function into entry file
-import configureStore from './store';
+import configureStore from './store/index';
+//to test my action function it must be imported in the entry file
+import { populateProduce } from './store/produce';
 import './index.css';
 import App from './App';
 
@@ -13,6 +15,8 @@ const store = configureStore();
 
 if (process.env.NODE_ENV !== "production") {
   window.store = store;
+  //the action then has to be attached to the window 
+  window.populateProduce = populateProduce;
 }
 
 function Root() {
